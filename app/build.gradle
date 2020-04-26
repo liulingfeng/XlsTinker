@@ -22,8 +22,8 @@ android {
         applicationId "com.mistong.ewttinker"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 159
-        versionName "1.5.9"
+        versionCode 160
+        versionName "1.6.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {

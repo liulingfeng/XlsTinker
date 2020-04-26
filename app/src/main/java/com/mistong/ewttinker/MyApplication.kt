@@ -49,14 +49,15 @@ class MyApplication : Application() {
             }
 
             override fun onDownloadSuccess(msg: String) {
-                Toast.makeText(applicationContext, "补丁下载成功", Toast.LENGTH_SHORT).show()
+                Log.e("德玛","补丁下载成功")
             }
 
             override fun onDownloadFailure(msg: String) {
-                Toast.makeText(applicationContext, "补丁下载失败", Toast.LENGTH_SHORT).show()
+                Log.e("德玛","补丁下载失败")
             }
 
             override fun onApplySuccess(msg: String) {
+                Log.e("德玛","补丁应用成功")
                 //停止菊花
                 val preferences = getSharedPreferences("ewt_hotfix", Context.MODE_PRIVATE)
                 val drivingFix = preferences.getBoolean("driving_fix", false)

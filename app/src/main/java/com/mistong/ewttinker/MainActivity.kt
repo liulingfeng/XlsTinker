@@ -3,7 +3,9 @@ package com.mistong.ewttinker
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
+import com.tencent.bugly.beta.tinker.TinkerManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
@@ -13,7 +15,9 @@ class MainActivity : BaseActivity() {
     override fun getLayout(): Int = R.layout.activity_main
     override fun initEventAndData() {
         tv.setOnClickListener {
-            Log.e("德玛", str)
+            Log.e("德玛", TinkerManager.getTinkerId())
+            Log.e("德玛2", TinkerManager.getNewTinkerId())
+            Beta.checkUpgrade(false,false)
         }
 
         update.setOnClickListener {
@@ -36,6 +40,7 @@ class MainActivity : BaseActivity() {
         val path = getExternalFilesDir(null)?.absolutePath + "/patch_signed_7zip.apk"
         val file = File(path)
         if (file.exists()) {
+            Log.e("德玛","补丁大小${file.length()}")
             Beta.canNotifyUserRestart = true //后面测试就没用了
             Beta.applyTinkerPatch(applicationContext, path)
         } else {
